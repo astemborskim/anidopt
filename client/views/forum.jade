@@ -1,0 +1,23 @@
+extends layout
+
+block navigation
+	div(class="navbar navbar-default")
+		ul(class="nav nav-pills")
+			li
+				a(href='/') Home
+			li
+				a(href='/cats') Cats
+			li
+				a(href='/dogs') Dogs
+			li
+				a(href='/fish') Fish
+			li
+				a(href='/reptiles') Reptiles
+			li
+				a(href='/small_animals') Small Animals
+			li.active
+				a(href='/forum') Forums
+			li
+				a(href='/list') List a Pet
+block content
+	p Forum Content

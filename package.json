@@ -1,0 +1,13 @@
+{
+  "name": "anidopt",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.3.13",
+    "body-parser": "^1.11.0",
+    "bootstrap": "^3.3.2",
+    "express": "^4.11.2",
+    "jade": "^1.9.2",
+    "mongoose": "^3.8.23",
+    "stylus": "^0.50.0"
+  }
+}

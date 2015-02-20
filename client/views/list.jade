@@ -1,0 +1,38 @@
+extends layout
+
+block navigation
+	div(class="navbar navbar-default")
+		ul(class="nav nav-pills")
+			li
+				a(href='/') Home
+			li
+				a(href='/cats') Cats
+			li
+				a(href='/dogs') Dogs
+			li
+				a(href='/fish') Fish
+			li
+				a(href='/reptiles') Reptiles
+			li
+				a(href='/small_animals') Small Animals
+			li
+				a(href='/forum') Forums
+			li.active
+				a(href='/list') List a Pet
+block heading
+	span(class="panel panel-primary")
+	h2(class="panel panel-heading")
+		| List a Pet for Adoption
+block content
+	div(id="wrap-form")
+		form(id="list-form")
+			div
+				label
+					| Pet Name:
+				input(type="text" placeholder="Pet's name" ng-model="petName")
+			div
+				label
+					| Pet Description:
+				input(type="text" placeholder="Description" ng-model="petDesc")
+block footer
+	&copy AniDopt Pet Services 2015

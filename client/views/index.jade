@@ -1,0 +1,40 @@
+extends layout
+
+block navigation
+	div(class="navbar navbar-default")
+		ul(class="nav nav-pills")
+			li.active
+				a(href='/') Home
+			li
+				a(href='/cats') Cats
+			li
+				a(href='/dogs') Dogs
+			li
+				a(href='/fish') Fish
+			li
+				a(href='/reptiles') Reptiles
+			li
+				a(href='/small_animals') Small Animals
+			li
+				a(href='/forum') Forums
+			li
+				a(href='/list') List a Pet
+block heading
+	span(class="panel panel-primary")
+		h2(class="panel panel-heading")
+			| AniDopt Pet Adoption Services and Community Portal
+block content
+	p(class="panel panel-content")
+		| Welcome to the AniDopt Adoption Service and Community Portal site.
+		| This online service is intended to assist those looking for pets to
+		| be able to browse availabe animals in need of a good home. You will
+		| also find other community users to discuss various topics about animal
+		| adoption and care. Enjoy!
+	div(ng-controller = "animalsController" class="panel panel-info")
+		h3(class="panel panel-heading") Types of aniamls available:
+		ul(class="panel panel-content")
+			li(ng-repeat="animal in animals") {{animal.category}}
+block footer
+	p &copy AniDopt Pet Adoption Services 2015
+
+	script(text="text/javascript" src="/js/controllers/animals-controller.js")

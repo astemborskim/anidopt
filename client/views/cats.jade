@@ -1,0 +1,47 @@
+extends layout
+
+block navigation
+	div(class="navbar navbar-default")
+		ul(class="nav nav-pills")
+			li
+				a(href='/') Home
+			li.active
+				a(href='/cats') Cats
+			li
+				a(href='/dogs') Dogs
+			li
+				a(href='/fish') Fish
+			li
+				a(href='/reptiles') Reptiles
+			li
+				a(href='/small_animals') Small Animals
+			li
+				a(href='/forum') Forums
+			li
+				a(href='/list') List a Pet
+block heading
+	span(class="panel panel-primary")
+		h2(id="cat-panels" class="panel panel-heading")
+			| Cats Available for Adoption
+block content
+	div(class="container-fluid")
+		div(id="catProfiles" ng-controller="catsController" class="panel panel-info")
+			h3(class="panel panel-heading")
+				| Cat Profiles:
+			div(class="container-fluid")
+				div(id="profile" ng-repeat="cat in catInfo" class="col-md-3 col-xs-3")
+					div(id="thumbnail" class="thumbnail")
+						img(id="pet-image" ng-src="{{cat.image}}" alt="{{cat.name}}")
+						div
+							div(id="pet-desc" class="caption")
+								h3 {{cat.name}}
+								p This is test text
+							a(id="button-adopt" href="#" class="btn btn-primary" role="button")
+								span(class="glyphicon glyphicon-heart")
+								|	Adopt
+							a(id="button-info" href="#" class="btn btn-default" role="button")
+								span(class="glyphicon glyphicon-info-sign")
+								| 	Info 
+
+block footer	
+	script(type="text/javascript" src="/js/controllers/cats-controller.js")

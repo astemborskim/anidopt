@@ -1,0 +1,66 @@
+#container > span {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-left: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-right: 0px;
+}
+#thumbnail {
+  postion: relative;
+  width: 300;
+  height: 450;
+}
+#button-adopt {
+  position: absolute;
+  bottom: 25;
+  left: 30;
+}
+#button-info {
+  position: absolute;
+  bottom: 25;
+  left: 125;
+}
+#pet-desc {
+  position: absolute;
+  width: 275;
+  height: 100;
+  top: 220;
+}
+#pet-image {
+  position: relative;
+  clip: rect(0px, 290px, 215px, 0px);
+  height: 215;
+  overflow: hidden;
+  margin: auto;
+}
+#list-form {
+  border-style: solid;
+  border-width: 1px;
+  max-width: 70%;
+  max-height: 70%;
+  position: absolute;
+}
+label {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  font-size: 100%;
+  padding-top: 0.1em;
+  padding-right: 0.25em;
+  width: 20em;
+  text-align: right;
+  float: left;
+}
+input {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  font-size: 100%;
+}
+#list-form > div {
+  padding-top: 5;
+}
+#wrap-form {
+  position: relative;
+}
