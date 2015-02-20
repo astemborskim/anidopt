@@ -20,7 +20,7 @@ block navigation
 			li
 				a(href='/list') List a Pet
 block heading
-	span(class="panel panel-primary")
+	div(class="panel panel-primary")
 		h2(class="panel panel-heading")
 			| AniDopt Pet Adoption Services and Community Portal
 block content
@@ -31,7 +31,7 @@ block content
 		| also find other community users to discuss various topics about animal
 		| adoption and care. Enjoy!
 	div(ng-controller = "animalsController" class="panel panel-info")
-		h3(class="panel panel-heading") Types of aniamls available:
+		h3(class="panel panel-heading") Types of animals available:
 		ul(class="panel panel-content")
 			li(ng-repeat="animal in animals") {{animal.category}}
 block footer

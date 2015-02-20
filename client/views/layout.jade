@@ -1,19 +1,17 @@
 docutype 
 	html(ng-app='myApp')
-		head()
-			title AniDopt - #{title}
-			block navigation
+		head
 			script( src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js")
 			script( src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-resource.js")
 			script( text='text/javascript' src="/app.js")
+			link( rel="stylesheet" href="/css/style.css" type="text/css" media="Screen")
 			link( rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
-			link( rel="stylesheet" href="/css/style.css")
-		body
-			div(id="container")
-				div(id="heading")
+			
+			title AniDopt - #{title}
+			block navigation
+		body(class="container-fluid")
+			div
 				block heading
-				div(id="content")
 				block content
 		footer
-			div(id="footer")
 			block footer
