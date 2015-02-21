@@ -20,17 +20,17 @@ block navigation
 			li
 				a(href='/list') List a Pet
 block heading
-	span(class="panel panel-primary")
+	div(class="panel panel-primary")
 		h2(id="cat-panels" class="panel panel-heading")
 			| Cats Available for Adoption
 block content
-	div(class="container-fluid")
-		div(id="catProfiles" ng-controller="catsController" class="panel panel-info")
-			h3(class="panel panel-heading")
-				| Cat Profiles:
-			div(class="container-fluid")
-				div(id="profile" ng-repeat="cat in catInfo" class="col-md-3 col-xs-3")
-					div(id="thumbnail" class="thumbnail")
+	div(id="catProfiles" ng-controller="catsController" class="panel panel-info")
+		h3(class="panel panel-heading")
+			| Cat Profiles:
+		div(class="container-fluid")
+			div(id="column" ng-repeat="cat in catInfo")
+				div(id="profile-container" class="thumbnail")
+					div(id="image-container")
 						img(id="pet-image" ng-src="{{cat.image}}" alt="{{cat.name}}")
 						div
 							div(id="pet-desc" class="caption")
@@ -42,6 +42,6 @@ block content
 							a(id="button-info" href="#" class="btn btn-default" role="button")
 								span(class="glyphicon glyphicon-info-sign")
 								| 	Info 
-
 block footer	
+	p &copy AniDopt Pet Adoption Services 2015
 	script(type="text/javascript" src="/js/controllers/cats-controller.js")
