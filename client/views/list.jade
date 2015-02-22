@@ -24,15 +24,20 @@ block heading
 	h2(class="panel panel-heading")
 		| List a Pet for Adoption
 block content
-	div(id="wrap-form")
-		form(id="list-form")
+	div(ng-controller="listController")
+		div(id="wrap-form")
+			form(ng-submit="postListing()")
+					label
+						| Pet Name:
+					input(type="text" placeholder="Pet's name" ng-model="petName")
+					button(type="submit")
+						| Post
+		div
+			p Recently listed:
 			div
-				label
-					| Pet Name:
-				input(type="text" placeholder="Pet's name" ng-model="petName")
-			div
-				label
-					| Pet Description:
-				input(type="text" placeholder="Description" ng-model="petDesc")
+				li(ng-repeat= "list in listings") {{list.name}}
+					button(id="delete")
+						| Delete
 block footer
-	&copy AniDopt Pet Services 2015
+	p &copy AniDopt Pet Services 2015
+	script( type="text/javascript" src="/js/controllers/list-controller.js")
