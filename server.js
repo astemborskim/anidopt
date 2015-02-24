@@ -14,6 +14,7 @@ var routes = require('./client/js/routes/index');
 var cats = require('./client/js/routes/cats');
 var dogs = require('./client/js/routes/dogs');
 var fish = require('./client/js/routes/fish');
+var birds = require('./client/js/routes/birds');
 var reptiles = require('./client/js/routes/reptiles');
 var small_animals = require('./client/js/routes/small_animals');
 var forum = require('./client/js/routes/forum');
@@ -38,6 +39,7 @@ app.get('/', routes);
 app.get('/cats', cats);
 app.get('/dogs', dogs);
 app.get('/fish', fish);
+app.get('/birds', birds);
 app.get('/reptiles', reptiles);
 app.get('/small_animals', small_animals);
 app.get('/forum', forum);
@@ -46,6 +48,9 @@ app.get('/list', list);
 //REST API Routes
 app.post('/api/listing', serverController.upload);
 app.get('/api/listing', serverController.download);
+app.get('/api/listing/:id', serverController.getOne);
+app.delete('/api/listing/:id', serverController.delete);
+app.put('/api/listing/:id', serverController.update);
 
 //Start server on port 3000
 app.listen(3000, function () {

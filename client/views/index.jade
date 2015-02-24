@@ -12,6 +12,8 @@ block navigation
 			li
 				a(href='/fish') Fish
 			li
+				a(href='/birds') Birds
+			li
 				a(href='/reptiles') Reptiles
 			li
 				a(href='/small_animals') Small Animals
@@ -30,11 +32,11 @@ block content
 		| be able to browse availabe animals in need of a good home. You will
 		| also find other community users to discuss various topics about animal
 		| adoption and care. Enjoy!
-	div(ng-controller = "animalsController" class="panel panel-info")
+	div(ng-controller = "indexController" class="panel panel-info")
 		h3(class="panel panel-heading") Types of animals available:
 		ul(class="panel panel-content")
-			li(ng-repeat="animal in animals") {{animal.category}}
+			li(ng-repeat="animal in categories") {{animal.category}}
 block footer
 	p &copy AniDopt Pet Adoption Services 2015
 
-	script(text="text/javascript" src="/js/controllers/animals-controller.js")
+	script(text="text/javascript" src="/js/controllers/index-controller.js")

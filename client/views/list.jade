@@ -26,18 +26,20 @@ block heading
 block content
 	div(ng-controller="listController")
 		div(id="wrap-form")
-			form(ng-submit="postListing()")
-					label
-						| Pet Name:
-					input(type="text" placeholder="Pet's name" ng-model="petName")
-					button(type="submit")
-						| Post
-		div
+			form
+				label
+					| Pet Name:
+				input(type="text" placeholder="Pet's name" ng-model="prof.petName")
+				button(type="button" ng-click="postListing()")
+					| Post
 			p Recently listed:
 			div
 				li(ng-repeat= "list in listings") {{list.name}}
-					button(id="delete")
+					button(type="button" ng-click="removeListing(list, $index)")
 						| Delete
+					input(type="text" ng-model="prof.newName")
+					button(type="button" ng-click="updateListing(list, $index)")
+						| Update
 block footer
 	p &copy AniDopt Pet Services 2015
 	script( type="text/javascript" src="/js/controllers/list-controller.js")
