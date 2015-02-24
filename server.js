@@ -46,11 +46,11 @@ app.get('/forum', forum);
 app.get('/list', list);
 
 //REST API Routes
-app.post('/api/listing', serverController.upload);
-app.get('/api/listing', serverController.download);
+app.post('/api/listing', serverController.uploadList);
+app.get('/api/listing', serverController.downloadList);
 app.get('/api/listing/:id', serverController.getOne);
-app.delete('/api/listing/:id', serverController.delete);
-app.put('/api/listing/:id', serverController.update);
+app.delete('/api/listing/:id', serverController.deleteList);
+app.put('/api/listing/:id', serverController.updateList);
 
 //Start server on port 3000
 app.listen(3000, function () {

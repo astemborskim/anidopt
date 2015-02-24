@@ -28,9 +28,11 @@ app.controller('listController', ['$scope', '$resource',
 		//console.log('Update: ' + JSON.stringify(object) + " @ " + idx);
 		var listing = new Listing();
 		listing.name = $scope.prof.newName;
+		if(listing.name != null){
 		listing.$update({id : object._id}, listing.name);
-			//$scope.listings.push(listing.name, idx);
+			$scope.listings[idx].name=listing.name;
 			$scope.prof.newName=null;
+		};
 	}
 
 	$scope.removeListing = function (object, idx){
