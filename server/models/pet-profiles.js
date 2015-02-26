@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('PetProfile', {
-	name : String
+	name : String,
+	desc : String,
+	image : Buffer
+
 });
