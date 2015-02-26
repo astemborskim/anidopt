@@ -34,12 +34,13 @@ block content
 					| Post
 			p Recently listed:
 			div
-				li(ng-repeat= "list in listings") {{list.name}}
-					button(type="button" ng-click="removeListing(list, $index)")
-						| Delete
-					input(type="text" ng-model="prof.newName")
-					button(type="button" ng-click="updateListing(list, $index)")
+				li(ng-repeat= "list in listings") {{list.name}}					
+					input(type="text" ng-model="prof.newName[$index]" ng-show="checked" placeholder="Edit Name Here...")
+					button(type="button" ng-click="updateListing(list, $index); checked = !checked" ng-show="checked")
 						| Update
-block footer
+					button(type="button" ng-click="removeListing(list, $index)" ng-show="checked")
+						| Delete
+					input(type="checkbox" ng-model="checked" )
+block footer		
 	p &copy AniDopt Pet Services 2015
 	script( type="text/javascript" src="/js/controllers/list-controller.js")

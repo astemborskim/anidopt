@@ -1,7 +1,9 @@
 app.controller('listController', ['$scope', '$resource',
 	function ($scope, $resource){
 
-	$scope.prof={};
+	$scope.prof={};;
+	//$scope.prof.newName = {};
+
 	//Rest API Route on server
 	var Listing = $resource('/api/listing/:id', {}, { update : {method : 'PUT'}});
 
@@ -9,6 +11,8 @@ app.controller('listController', ['$scope', '$resource',
 		$scope.listings=results;
 		//console.log('Query:\n' + JSON.stringify(results));
 	})
+
+
 
 	$scope.postListing = function(){
 		var listing = new Listing();
@@ -27,7 +31,7 @@ app.controller('listController', ['$scope', '$resource',
 	$scope.updateListing = function (object, idx){
 		//console.log('Update: ' + JSON.stringify(object) + " @ " + idx);
 		var listing = new Listing();
-		listing.name = $scope.prof.newName;
+		listing.name = $scope.prof.newName[idx];
 		if(listing.name != null){
 		listing.$update({id : object._id}, listing.name);
 			$scope.listings[idx].name=listing.name;
