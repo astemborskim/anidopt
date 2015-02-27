@@ -12,8 +12,6 @@ app.controller('listController', ['$scope', '$resource',
 		//console.log('Query:\n' + JSON.stringify(results));
 	})
 
-
-
 	$scope.postListing = function(){
 		var listing = new Listing();
 		//console.log('listing:' + JSON.stringify(listing));
