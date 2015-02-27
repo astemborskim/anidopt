@@ -51,6 +51,7 @@ app.get('/api/listing', serverController.downloadList);
 app.get('/api/listing/:id', serverController.getOne);
 app.delete('/api/listing/:id', serverController.deleteList);
 app.put('/api/listing/:id', serverController.updateList);
+app.post('/api/imageStream', serverController.gridUpload);
 
 //Start server on port 3000
 app.listen(3000, function () {

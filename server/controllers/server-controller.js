@@ -1,4 +1,5 @@
 var PetModel = require('../models/pet-profiles');
+var mongoose = require('mongoose');
 
 module.exports.uploadList = function(req, res){
 	//console.log(req.body);
@@ -36,3 +37,26 @@ module.exports.deleteList = function(req, res){
 	 	res.json(results);
 	});
 }
+
+module.exports.gridUpload = function(req, res){
+	var conn = mongoose.connection;
+	var fs = require('fs');
+	var Grid = require('gridfs-stream');
+	Grid.mongo = mongoose.mongo;
+		console.log('open');
+		var gfs = Grid(conn.db);
+
+		//filname to store in mongodb
+		var writestream = gfs.createWriteStream({
+				filname : 'test_file.txt'
+		});
+		fs.createReadStream('../../projects/anidopt/client/img/cuddles.jpg').pipe(writestream);
+
+		writestream.on('close', function (file) {
+			console.log(file.filename + 'Written to DB');
+			res.json(file.filename);
+		});
+		
+}
+
+

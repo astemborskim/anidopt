@@ -41,6 +41,9 @@ block content
 					button(type="button" ng-click="removeListing(list, $index)" ng-show="checked")
 						| Delete
 					input(type="checkbox" ng-model="checked" )
+	div(ng-controller='listController')
+		button(type="button" ng-click="streamImage()")
+			| Stream
 block footer		
 	p &copy AniDopt Pet Services 2015
 	script( type="text/javascript" src="/js/controllers/list-controller.js")

@@ -1,11 +1,12 @@
 app.controller('listController', ['$scope', '$resource',
 	function ($scope, $resource){
 
-	$scope.prof={};;
+	$scope.prof={};
 	//$scope.prof.newName = {};
 
 	//Rest API Route on server
 	var Listing = $resource('/api/listing/:id', {}, { update : {method : 'PUT'}});
+	var ImageStream = $resource('/api/imageStream');
 
 	Listing.query(function (results){
 		$scope.listings=results;
@@ -38,10 +39,21 @@ app.controller('listController', ['$scope', '$resource',
 	}
 
 	$scope.removeListing = function (object, idx){
-			var listing = new Listing();
+		var listing = new Listing();
 			//console.log('list-Cntr: ' + object._id + "\n object.index: " + idx);
 			//console.log('Listing: ' + JSON.stringify(listing));
-			listing.$remove({id : object._id});
+		listing.$remove({id : object._id});
 			$scope.listings.splice(idx, 1);
+	}
+
+	$scope.streamImage = function(){
+		var iStream = new ImageStream();
+		iStream.$save(function (result){
+			console.log('image uploaded =' + result);
+		});
+		// var imagestream = new ImageStream();
+		// console.log('imagestream: ' + JSON.stringify(imagestream));
+		// imagestream.query(function (result){
+		// 	console.log('streamImage Executed' + result);
 	}
 }]);
