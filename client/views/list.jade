@@ -27,11 +27,20 @@ block content
 	div(ng-controller="listController")
 		div(id="wrap-form")
 			form
-				label
-					| Pet Name:
-				input(type="text" placeholder="Pet's name" ng-model="prof.petName")
-				button(type="button" ng-click="postListing()")
-					| Post
+				div
+					label
+						| Pet Name:
+					input(type="text" placeholder="Pet's name" ng-model="prof.petName")
+				div
+					label
+						| Pet Description:
+					input(type="text", placeholder="Pet Description" ng-model="prof.petDesc")
+				div
+					button(type="button" ng-click="postListing()")
+						| Post
+			form(id="uploadForm", enctype="multipart/form-data" action = "/api/photo" method = "post")
+				input( type="file" name="userPhoto")
+				input( type="submit" value="Upload Image" name="submit")
 			p Recently listed:
 			div
 				li(ng-repeat= "list in listings") {{list.name}}					

@@ -5,8 +5,7 @@ app.controller('listController', ['$scope', '$resource',
 	//$scope.prof.newName = {};
 
 	//Rest API Route on server
-	var Listing = $resource('/api/listing/:id', {}, { update : {method : 'PUT'}});
-	var ImageStream = $resource('/api/imageStream');
+	var Listing = $resource('/api/listing/:id', {}, { update : {method : 'PUT'}});;
 
 	Listing.query(function (results){
 		$scope.listings=results;
@@ -16,12 +15,15 @@ app.controller('listController', ['$scope', '$resource',
 	$scope.postListing = function(){
 		var listing = new Listing();
 		//console.log('listing:' + JSON.stringify(listing));
-		listing.name = $scope.prof.petName;
-			if(listing.name != null){
+		listing.name= $scope.prof.petName;
+		listing.desc = $scope.prof.petDesc;
+		//console.log(JSON.stringify(listing));
+			if(listing.name != null && listing.desc != null){
 				listing.$save(function (results){
 					$scope.listings.push(results);
 					$scope.prof.petName=null;
-					//console.log('Results:\n' + JSON.stringify(results));
+					$scope.prof.petDesc=null;
+					console.log('Results:\n' + JSON.stringify(results));
 				});
 			}//end if
 			else{console.log('NULL VALUE');}
