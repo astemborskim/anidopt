@@ -2,6 +2,7 @@ app.controller('listController', ['$scope', '$resource',
 	function ($scope, $resource){
 
 	$scope.prof={};
+	$scope.prof.check=false;
 	//$scope.prof.newName = {};
 
 	//Rest API Route on server
@@ -15,7 +16,7 @@ app.controller('listController', ['$scope', '$resource',
 	$scope.postListing = function(){
 		var listing = new Listing();
 		//console.log('listing:' + JSON.stringify(listing));
-		listing.name= $scope.prof.petName;
+		listing.name = $scope.prof.petName;
 		listing.desc = $scope.prof.petDesc;
 		//console.log(JSON.stringify(listing));
 			if(listing.name != null && listing.desc != null){
@@ -23,7 +24,8 @@ app.controller('listController', ['$scope', '$resource',
 					$scope.listings.push(results);
 					$scope.prof.petName=null;
 					$scope.prof.petDesc=null;
-					console.log('Results:\n' + JSON.stringify(results));
+					//toggle ng-show/ng-hide forms
+					$scope.prof.check=true;
 				});
 			}//end if
 			else{console.log('NULL VALUE');}
@@ -48,14 +50,15 @@ app.controller('listController', ['$scope', '$resource',
 			$scope.listings.splice(idx, 1);
 	}
 
-	$scope.streamImage = function(){
-		var iStream = new ImageStream();
-		iStream.$save(function (result){
-			console.log('image uploaded =' + result);
-		});
-		// var imagestream = new ImageStream();
-		// console.log('imagestream: ' + JSON.stringify(imagestream));
-		// imagestream.query(function (result){
-		// 	console.log('streamImage Executed' + result);
-	}
+	// $scope.streamImage = function(){
+	// 	var iStream = new ImageStream();
+	// 	iStream.$save(function (result){
+	// 		console.log('image uploaded =' + result);
+	// 	});
+	// 	var imagestream = new ImageStream();
+	// 	console.log('imagestream: ' + JSON.stringify(imagestream));
+	// 	imagestream.query(function (result){
+	// 		console.log('streamImage Executed' + result);
+	// }
+
 }]);

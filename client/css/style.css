@@ -92,3 +92,21 @@ a#button-info {
 div#pet-desc {
   position: absolute;
 }
+fieldset.well {
+  border: 1px solid;
+  padding: 20;
+  background-color: #fff;
+  padding-left: 50;
+}
+legend.the-legend {
+  font-size: 1em;
+  margin: 0;
+  text-align: left;
+  width: auto;
+}
+form#petInfo {
+  margin-left: 100;
+}
+form#petPhoto {
+  margin-left: 100;
+}

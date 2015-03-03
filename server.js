@@ -4,8 +4,6 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	bodyparser = require('body-parser'),
 	stylus	= require('stylus'),
-	multer = require('multer'),
-	done = false,
 	serverController = require('./server/controllers/server-controller');
 
 //DB connection
@@ -27,6 +25,7 @@ app.set('views', __dirname + '/client/views');
 app.set('view engine', 'jade');
 
 app.use(bodyparser.json());
+//app.use(express.bodyparser());
 
 app.use(express.static(__dirname + '/client/'));
 app.use(stylus.middleware({
@@ -36,18 +35,20 @@ app.use(stylus.middleware({
 	force: true
 }));
 
-app.use(multer({ dest: './uploads/',
-	rename: function (fieldname, filename) {
-		return filename+Date.now();
-	},
-onFileUploadStart: function (file) {
-	console.log(file.originalname + ' is starting...')
-},
-onFileUploadComplete: function (file) {
-	console.log(file.fieldname + ' uploaded to ' + file.path);
-	done = true;
-}
-}));
+// app.use(multer({ 
+// 	dest: './uploads/',
+// 	rename: function (fieldname, filename) {
+// 		return filename+Date.now();
+// 	},
+// 	onFileUploadStart: function (file) {
+// 		console.log(file.originalname + ' is starting...')
+// 	},
+// 	onFileUploadComplete: function (file) {
+// 		console.log(file.fieldname + ' uploaded to ' + file.path);
+// 		done = true;
+// 	}
+// 	//inMemory: true;
+// }));
 
 //get route
 app.get('/', routes);
@@ -66,15 +67,8 @@ app.get('/api/listing', serverController.downloadList);
 app.get('/api/listing/:id', serverController.getOne);
 app.delete('/api/listing/:id', serverController.deleteList);
 app.put('/api/listing/:id', serverController.updateList);
-app.post('/api/photo', function (req, res){
-	if(done==true){
-		console.log(req.files);
-		res.end("File uploaded.");
-	}
-	else{
-		res.end('File Failed to store to destination');
-	}
-});
+app.post('/api/image', serverController.uploadImage);
+
 
 //Start server on port 3000
 app.listen(3000, function () {
