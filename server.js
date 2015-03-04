@@ -4,6 +4,7 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	bodyparser = require('body-parser'),
 	stylus	= require('stylus'),
+	multer = require('multer'),
 	serverController = require('./server/controllers/server-controller');
 
 //DB connection
@@ -36,7 +37,7 @@ app.use(stylus.middleware({
 }));
 
 // app.use(multer({ 
-// 	dest: './uploads/',
+// 	dest: '.server/uploads/',
 // 	rename: function (fieldname, filename) {
 // 		return filename+Date.now();
 // 	},
@@ -47,7 +48,6 @@ app.use(stylus.middleware({
 // 		console.log(file.fieldname + ' uploaded to ' + file.path);
 // 		done = true;
 // 	}
-// 	//inMemory: true;
 // }));
 
 //get route
@@ -67,7 +67,13 @@ app.get('/api/listing', serverController.downloadList);
 app.get('/api/listing/:id', serverController.getOne);
 app.delete('/api/listing/:id', serverController.deleteList);
 app.put('/api/listing/:id', serverController.updateList);
-app.post('/api/image', serverController.uploadImage);
+app.post('/api/image/', [multer({ 
+	dest: './server/uploads/',
+		rename: function (fieldname, filename) {
+		return filename+Date.now();
+		}
+	}), serverController.uploadImage
+]);
 
 
 //Start server on port 3000

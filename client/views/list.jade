@@ -42,9 +42,9 @@ block content
 					fieldset(class="well")
 						legend(class="the-legend")
 							| Step 2: Upload Photo:
-						input( type="file" name="image")
+						input( type="file" name="image" )
 				div
-					input( type="submit" value="Upload Image" name="submit")
+					input( type="submit" name="submit" value="Upload Image" ng-click="getId()")
 			p Recently listed:
 			div
 				li(ng-repeat= "list in listings") {{list.name}}					
@@ -61,7 +61,7 @@ block content
 				div
 					div(id="profile-container" class="thumbnail")
 						div(id="image-container")
-							img(id="pet-image" ng-src="data:image/jpeg;base64,{{prof.image}}" alt="{{prof.name}}")
+							img(id="pet-image" ng-src="{{prof.image}}" alt="{{prof.name}}")
 							div
 								div(id="pet-desc" class="caption")
 									h3 Name goes here: {{prof.name}}

@@ -1,6 +1,6 @@
 var PetModel = require('../models/pet-profiles');
 var mongoose = require('mongoose');
-var formidable = require('formidable');
+//var formidable = require('formidable');
 var util = require('util');
 var fs = require('fs');
 
@@ -41,23 +41,11 @@ module.exports.deleteList = function(req, res){
 }
 
 module.exports.uploadImage = function(req, res){
-		//console.log('Body: ' + JSON.stringify(req.body));
-	var form = new formidable.IncomingForm();
 		
-		form.parse(req, function (err, fields, files){
-	
-		console.log(files.image.path);
-		var imageBuffer = fs.readFileSync(files.image.path);
-		var petmodel = new PetModel();
-		petmodel.name = 'Test Name';
-		petmodel.desc = "Test Description..."
-		petmodel.image = imageBuffer;
-		petmodel.save(function (err, results){
-		 	if (err) {console.log(err);}
-			console.log(imageBuffer);
-		res.json(petmodel);
-			})
+		console.log('Body: ' + JSON.stringify(req.body));
+		console.log('File: ' + JSON.stringify(req.files))
 		
-	});
+		res.json(req.body);
+		
 }
 

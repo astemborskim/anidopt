@@ -24,8 +24,10 @@ app.controller('listController', ['$scope', '$resource',
 					$scope.listings.push(results);
 					$scope.prof.petName=null;
 					$scope.prof.petDesc=null;
+					var postid = results._id;
+					$scope.prof.post_id = postid;
 					//toggle ng-show/ng-hide forms
-					$scope.prof.check=true;
+					//$scope.prof.check=true;
 				});
 			}//end if
 			else{console.log('NULL VALUE');}
@@ -48,6 +50,10 @@ app.controller('listController', ['$scope', '$resource',
 			//console.log('Listing: ' + JSON.stringify(listing));
 		listing.$remove({id : object._id});
 			$scope.listings.splice(idx, 1);
+	}
+
+		$scope.getId = function (object, idx){
+			console.log($scope.post_id);
 	}
 
 	// $scope.streamImage = function(){
