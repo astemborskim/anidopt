@@ -37,7 +37,7 @@ block content
 					div
 						button(type="button" ng-click="postListing()")
 							| Post
-			form(id="petPhoto" ng-show="prof.check==true" enctype="multipart/form-data" action = "/api/image" method = "post")
+			form(id="petPhoto" ng-hide="prof.check==true" enctype="multipart/form-data" action = "/api/image" method = "post")
 				div
 					fieldset(class="well")
 						legend(class="the-legend")
@@ -55,23 +55,23 @@ block content
 						| Delete
 					input(type="checkbox" ng-model="checked" )
 		div(id="catProfiles" ng-controller="testController" class="panel panel-info")
-		h3(class="panel panel-heading")
-			| Cat Profiles:
-		div(class="container-fluid")
-			div(id="column" ng-repeat="cat in catInfo")
-				div(id="profile-container" class="thumbnail")
-					div(id="image-container")
-						img(id="pet-image" ng-src="{{profile.image}}" alt="{{profile.name}}")
-						div
-							div(id="pet-desc" class="caption")
-								h3 {{profile.name}}
-								p {{profile.desc}}
-							a(id="button-adopt" href="#" class="btn btn-primary" role="button")
-								span(class="glyphicon glyphicon-heart")
-								|	Adopt
-							a(id="button-info" href="#" class="btn btn-default" role="button")
-								span(class="glyphicon glyphicon-info-sign")
-								| 	Info
+			h3(class="panel panel-heading")
+				| Cat Profiles:
+			div(class="container-fluid")
+				div
+					div(id="profile-container" class="thumbnail")
+						div(id="image-container")
+							img(id="pet-image" ng-src="data:image/jpeg;base64,{{prof.image}}" alt="{{prof.name}}")
+							div
+								div(id="pet-desc" class="caption")
+									h3 Name goes here: {{prof.name}}
+									p Description goes here: {{prof.desc}}
+								a(id="button-adopt" href="#" class="btn btn-primary" role="button")
+									span(class="glyphicon glyphicon-heart")
+									|	Adopt
+								a(id="button-info" href="#" class="btn btn-default" role="button")
+									span(class="glyphicon glyphicon-info-sign")
+									| 	Info
 block footer		
 	p &copy AniDopt Pet Services 2015
 	script( type="text/javascript" src="/js/controllers/list-controller.js")

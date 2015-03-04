@@ -6,7 +6,7 @@ app.controller('listController', ['$scope', '$resource',
 	//$scope.prof.newName = {};
 
 	//Rest API Route on server
-	var Listing = $resource('/api/listing/:id', {}, { update : {method : 'PUT'}});;
+	var Listing = $resource('/api/listing/:id', {}, { update : {method : 'PUT'}});
 
 	Listing.query(function (results){
 		$scope.listings=results;

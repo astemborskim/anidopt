@@ -1,12 +1,17 @@
 app.controller('testController', ['$scope', '$resource', 
 	function ($scope, $resource){
 
-		var Profile = $resource('/api/listing/:id', {})
+		var pid = '54f67f773b53e3681ff6df6b';
+		$scope.prof= {};
 
-		var id = '54f541f8bd6e44d01feef7fe';
+		var Profile = $resource('/api/listing/:id', {}, { get : {method : 'GET', isArray: true}});
+		
 
-		Profile.get({ _id : id }, function (results){
-			$scope.profile = results;
-			console.log(JSON.stringify(profile));
+
+		Profile.get({ id : pid }, function (results){
+			$scope.prof = results[0];
+			console.log($scope.prof);
+			//$scope.prof = results[0];
+
 		})
 }]);

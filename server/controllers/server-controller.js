@@ -41,19 +41,22 @@ module.exports.deleteList = function(req, res){
 }
 
 module.exports.uploadImage = function(req, res){
-		console.log('Body: ' + JSON.stringify(req.body));
+		//console.log('Body: ' + JSON.stringify(req.body));
 	var form = new formidable.IncomingForm();
-	
+		
 		form.parse(req, function (err, fields, files){
 	
-		var image = new Buffer(files, "binary");
+		console.log(files.image.path);
+		var imageBuffer = fs.readFileSync(files.image.path);
 		var petmodel = new PetModel();
-		petmodel.image = image;//fs.createWriteStream(files.image.name.toString(), files, 'binary');
-		//console.log({fields : fields, files : files});
+		petmodel.name = 'Test Name';
+		petmodel.desc = "Test Description..."
+		petmodel.image = imageBuffer;
 		petmodel.save(function (err, results){
-			if (err) {console.log(err);}
-			res.json(results);
-		})
+		 	if (err) {console.log(err);}
+			console.log(imageBuffer);
+		res.json(petmodel);
+			})
 		
 	});
 }
