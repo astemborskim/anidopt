@@ -41,7 +41,7 @@ module.exports.deleteList = function(req, res){
 }
 
 module.exports.uploadImage = function(req, res){
-		
+		//NEED the id from mongo for the first submission here so i can update with image path
 		console.log('Body: ' + JSON.stringify(req.body));
 		console.log('File: ' + JSON.stringify(req.files))
 		
