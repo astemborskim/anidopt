@@ -45,16 +45,25 @@ var server = exports.server = http.createServer(app).listen(3000, function () {
 var io = require('socket.io').listen(server);
 //for debug
 //io.set("log level", 0);
-
+var post_id;
 //listener
-io.sockets.on("connection", function (socket){
-	//console.log("connected to socket");
-	socket.on('echo', function (id, callback){
-		callback = callback || function () {};
-		console.log("server.js: " + id);
-		serverController.post_id(id);
-		callback(null, "Done.");
-	});
+io.sockets.on('connection', function (socket){
+	console.log("connected to socket");
+
+	socket.on('post:id', function (id){
+		post_id = id;
+		//Give Server controller the id for Image Post
+		serverController.postId(id);
+		console.log('server.js has ID: ' + post_id);
+	})
+
+
+	// socket.on('post:id', function (id, callback){
+	// 	callback = callback || function () {};
+	// 	//console.log("server.js: " + id);
+	// 	var post_id = id;
+	// 	callback(null, "Done.");
+	// });
 
 })
 
@@ -80,7 +89,7 @@ app.post('/api/image/', [multer({
 		rename: function (fieldname, filename) {
 		return filename+Date.now();
 		}
-	}), serverController.uploadImage
+	}), serverController.uploadImagePath
 ]);
 
 

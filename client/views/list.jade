@@ -25,7 +25,7 @@ block heading
 block content
 	script.
 		var socket = io.connect('http://localhost:3000');
-		function postId(id){ socket.emit("echo", id)};
+		function emitId(id){ console.log('before emit: ' + id); socket.emit('post:id', id)};
 	div(ng-controller="listController")
 		div(id="wrap-form")
 			form(id="petInfo" ng-hide="prof.check==true")
@@ -44,9 +44,9 @@ block content
 					fieldset(class="well")
 						legend(class="the-legend")
 							| Step 2: Upload Photo:
-						input( type="file" name="image" ng-click="getId($scope.prof.post_id)")
+						input( type="file" name="image" ng-click="getId()")
 				div
-					input( type="submit" name="submit" value="Upload Image")
+					input( type="submit" name="submit" value="Upload Image" )
 			p Recently listed: {{prof.post_id}}
 			div
 				li(ng-repeat= "list in listings") {{list.name}}					

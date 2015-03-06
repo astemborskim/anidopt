@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 //var formidable = require('formidable');
 var util = require('util');
 var fs = require('fs');
-
+var post_id;
 module.exports.uploadList = function(req, res){
 	//console.log('Output: ' + JSON.stringify(req.body));
 	var petmodel = new PetModel(req.body);
@@ -40,19 +40,23 @@ module.exports.deleteList = function(req, res){
 	});
 }
 
-module.exports.uploadImage = function(req, res){
+module.exports.uploadImagePath = function(req, res){
 		//NEED the id from mongo for the first submission here so i can update with image path
 		//console.log('Body: ' + JSON.stringify(req.body));
-		console.log('File: ' + JSON.stringify(req.files));
+		console.log('File Path to Update: ' + JSON.stringify(req.files.image.path));
+		console.log('serverController.uploadImage has ID: ' + post_id);
+		console.log('req.params.id : ' + req.params.id);
+	PetModel.update({ _id : post_id }, {image_path: req.files.image.path}, function (err, results){
+	 	if(err){console.log(err);}
 		//console.log('id: ' + $scope.prof.post_id);
-		res.json(req.files);
+		//post_id = null;
+		//console.log('After Update ID: ' + post_id);
+		res.json(results);
+	});
 }
 
-module.exports.post_id = function (id){
-		//console.log("post_id function: " + id)
-		updateWithImagePath();
-		function updateWithImagePath (req, res){
-			res.end(id);
-		}
+module.exports.postId = function (id){
+		post_id = id;
+		//console.log("postId function: " + id)
 }
 

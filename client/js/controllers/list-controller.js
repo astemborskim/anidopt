@@ -18,6 +18,7 @@ app.controller('listController', ['$scope', '$resource',
 		//console.log('listing:' + JSON.stringify(listing));
 		listing.name = $scope.prof.petName;
 		listing.desc = $scope.prof.petDesc;
+		listing.image_path = null; //placeholder for profile image path
 		//console.log(JSON.stringify(listing));
 			if(listing.name != null && listing.desc != null){
 				listing.$save(function (results){
@@ -54,7 +55,8 @@ app.controller('listController', ['$scope', '$resource',
 
 		$scope.getId = function (){
 			//console.log("Inside getId: " + $scope.prof.post_id);
-			postId($scope.prof.post_id);
+			//pass id to socketio function in list.jade view
+			emitId($scope.prof.post_id);
 	}
 
 
