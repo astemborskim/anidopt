@@ -42,10 +42,17 @@ module.exports.deleteList = function(req, res){
 
 module.exports.uploadImage = function(req, res){
 		//NEED the id from mongo for the first submission here so i can update with image path
-		console.log('Body: ' + JSON.stringify(req.body));
-		console.log('File: ' + JSON.stringify(req.files))
-		
-		res.json(req.body);
-		
+		//console.log('Body: ' + JSON.stringify(req.body));
+		console.log('File: ' + JSON.stringify(req.files));
+		//console.log('id: ' + $scope.prof.post_id);
+		res.json(req.files);
+}
+
+module.exports.post_id = function (id){
+		//console.log("post_id function: " + id)
+		updateWithImagePath();
+		function updateWithImagePath (req, res){
+			res.end(id);
+		}
 }
 

@@ -24,10 +24,10 @@ app.controller('listController', ['$scope', '$resource',
 					$scope.listings.push(results);
 					$scope.prof.petName=null;
 					$scope.prof.petDesc=null;
-					var postid = results._id;
-					$scope.prof.post_id = postid;
+					$scope.prof.post_id = results._id;
+					console.log('Inside postListing: ' + $scope.prof.post_id);
 					//toggle ng-show/ng-hide forms
-					//$scope.prof.check=true;
+					$scope.prof.check=true;
 				});
 			}//end if
 			else{console.log('NULL VALUE');}
@@ -52,19 +52,11 @@ app.controller('listController', ['$scope', '$resource',
 			$scope.listings.splice(idx, 1);
 	}
 
-		$scope.getId = function (object, idx){
-			console.log($scope.post_id);
+		$scope.getId = function (){
+			//console.log("Inside getId: " + $scope.prof.post_id);
+			postId($scope.prof.post_id);
 	}
 
-	// $scope.streamImage = function(){
-	// 	var iStream = new ImageStream();
-	// 	iStream.$save(function (result){
-	// 		console.log('image uploaded =' + result);
-	// 	});
-	// 	var imagestream = new ImageStream();
-	// 	console.log('imagestream: ' + JSON.stringify(imagestream));
-	// 	imagestream.query(function (result){
-	// 		console.log('streamImage Executed' + result);
-	// }
+
 
 }]);

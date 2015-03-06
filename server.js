@@ -1,12 +1,14 @@
 var express = require('express'),
-	app 	= express(),
 	mongodb	= require('mongodb'),
 	mongoose = require('mongoose'),
 	bodyparser = require('body-parser'),
 	stylus	= require('stylus'),
 	multer = require('multer'),
+	io = require('socket.io'),
+	http = require('http'),
 	serverController = require('./server/controllers/server-controller');
 
+var app = express();
 //DB connection
 mongoose.connect('mongodb://localhost:27017/anidopt');
 
@@ -36,6 +38,25 @@ app.use(stylus.middleware({
 	force: true
 }));
 
+var server = exports.server = http.createServer(app).listen(3000, function () {
+		console.log("Server is listening...");
+});
+
+var io = require('socket.io').listen(server);
+//for debug
+//io.set("log level", 0);
+
+//listener
+io.sockets.on("connection", function (socket){
+	//console.log("connected to socket");
+	socket.on('echo', function (id, callback){
+		callback = callback || function () {};
+		console.log("server.js: " + id);
+		serverController.post_id(id);
+		callback(null, "Done.");
+	});
+
+})
 
 //get route
 app.get('/', routes);
@@ -64,6 +85,6 @@ app.post('/api/image/', [multer({
 
 
 //Start server on port 3000
-app.listen(3000, function () {
-	console.log("Server is listening...");
-})
+// app.listen(3000, function () {
+// 	console.log("Server is listening...");
+// })
