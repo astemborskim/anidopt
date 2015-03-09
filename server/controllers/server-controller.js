@@ -51,7 +51,8 @@ module.exports.uploadImagePath = function(req, res){
 		//console.log('id: ' + $scope.prof.post_id);
 		//post_id = null;
 		//console.log('After Update ID: ' + post_id);
-		res.json(results);
+		else{
+		res.redirect('/list');}
 	});
 }
 

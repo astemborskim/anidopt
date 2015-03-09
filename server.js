@@ -31,6 +31,7 @@ app.use(bodyparser.json());
 //app.use(express.bodyparser());
 
 app.use(express.static(__dirname + '/client/'));
+app.use('/image', express.static(__dirname));
 app.use(stylus.middleware({
 	src: __dirname + '/css',
 	dest: __dirname + '/css',

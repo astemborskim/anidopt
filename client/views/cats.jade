@@ -24,24 +24,24 @@ block heading
 		h2(id="cat-panels" class="panel panel-heading")
 			| Cats Available for Adoption
 block content
-	div(id="catProfiles" ng-controller="catsController" class="panel panel-info")
+	div(id="catProfiles" ng-controller="listController" class="panel panel-info")
 		h3(class="panel panel-heading")
 			| Cat Profiles:
 		div(class="container-fluid")
-			div(id="column" ng-repeat="cat in catInfo")
+			div(id="column" ng-repeat="list in listings")
 				div(id="profile-container" class="thumbnail")
 					div(id="image-container")
-						img(id="pet-image" ng-src="{{cat.image}}" alt="{{cat.name}}")
+						img(id="pet-image" ng-src="/image/{{list.image_path}}" alt="{{list.name}}")
 						div
 							div(id="pet-desc" class="caption")
-								h3 {{cat.name}}
-								p {{cat.desc}}
+								h3 {{list.name}}
+								p  {{list.desc}}
 							a(id="button-adopt" href="#" class="btn btn-primary" role="button")
 								span(class="glyphicon glyphicon-heart")
 								|	Adopt
 							a(id="button-info" href="#" class="btn btn-default" role="button")
 								span(class="glyphicon glyphicon-info-sign")
-								| 	Info 
+								| 	Info
 block footer	
 	p &copy AniDopt Pet Adoption Services 2015
-	script(type="text/javascript" src="/js/controllers/cats-controller.js")
+	script(type="text/javascript" src="/js/controllers/list-controller.js")

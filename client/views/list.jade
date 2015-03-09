@@ -36,6 +36,29 @@ block content
 						input(type="text" placeholder="Pet's name" ng-model="prof.petName")
 						div
 						input(type="text", placeholder="Pet Description" ng-model="prof.petDesc")
+						div
+						//- form
+						//- 	input(type="radio" name="type" value="cats" checked)
+						//- 	label
+						//- 		| Cat
+						//- 	input(type="radio" name="type" value="dogs")
+						//- 	label
+						//- 		| Dog
+						//- 	input(type="radio" name="type" value="fish" checked)
+						//- 	label
+						//- 		| Fish
+						//- 	input(type="radio" name="type" value="reptiles")
+						//- 	label
+						//- 		| Reptiles
+						//- 	input(type="radio" name="type" value="smallAnimals")
+						//- 	label
+						//- 		| Rabbit
+						form
+							div(class="btn-group" data-toggle="buttons")
+								label(class="btn btn-default") Cat
+									input(type="radio" value="cats" name="type" checked="checked")
+								label(class="btn btn-default") Dog
+									input(type="radio" value="dogs" name="type")
 					div
 						button(type="button" ng-click="postListing()")
 							| Post
@@ -56,25 +79,6 @@ block content
 					button(type="button" ng-click="removeListing(list, $index)" ng-show="checked")
 						| Delete
 					input(type="checkbox" ng-model="checked" )
-		div(id="catProfiles" ng-controller="listController" class="panel panel-info")
-			h3(class="panel panel-heading")
-				| Cat Profiles:
-			div(class="container-fluid")
-				div(id="column" ng-repeat="list in listings")
-					div(id="profile-container" class="thumbnail")
-						div(id="image-container")
-							img(id="pet-image" ng-src="../img/rocko.jpg" alt="{{list.name}}")
-							div
-								div(id="pet-desc" class="caption")
-									h3 {{list.name}}
-									p  {{list.desc}}
-								a(id="button-adopt" href="#" class="btn btn-primary" role="button")
-									span(class="glyphicon glyphicon-heart")
-									|	Adopt
-								a(id="button-info" href="#" class="btn btn-default" role="button")
-									span(class="glyphicon glyphicon-info-sign")
-									| 	Info
-
 block footer		
 	p &copy AniDopt Pet Services 2015
 	script( type="text/javascript" src="/js/controllers/list-controller.js")
